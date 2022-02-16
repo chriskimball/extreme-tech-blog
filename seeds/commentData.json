@@ -6,12 +6,12 @@
     },
     {
         "content": "User#2 Post#2 Comment",
-        "user_id":2,
+        "user_id":1,
         "post_id":2
     },
     {
         "content": "User #3 Post#3 Comment",
-        "user_id":3,
+        "user_id":1,
         "post_id":3
     }
 ]
