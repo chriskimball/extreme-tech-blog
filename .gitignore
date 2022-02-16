@@ -114,3 +114,5 @@ node_modules
 .prettierrc.json
 
 ORIGINALREADME.md
+
+indexTemplate.html

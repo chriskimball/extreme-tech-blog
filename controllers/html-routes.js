@@ -35,7 +35,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-//TODO:
 // GET - "/login" - login form
 // login.handlebars
 router.get('/login', (req, res) => {
@@ -48,7 +47,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-//TODO:
 // GET - "/signup" - Registration Form
 // register.handlebars
 router.get('/signup', (req, res) => {
@@ -60,6 +58,7 @@ router.get('/signup', (req, res) => {
 
   res.render('register');
 });
+
 //TODO:
 // GET - "/dashboard" - user dashboard
 // dashboard.handlebars
