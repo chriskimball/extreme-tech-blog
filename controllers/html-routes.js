@@ -33,6 +33,15 @@ router.get('/', async (req, res) => {
 //TODO:
 // GET - "/login" - login form
 // login.handlebars
+router.get('/login', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });
 
 //TODO:
 // GET - "/signup" - Registration Form
