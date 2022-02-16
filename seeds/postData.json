@@ -1,0 +1,17 @@
+[
+  {
+    "title": "User#1 Post#1 Title",
+    "content": "User#1 Post#1 Content",
+    "user_id":1
+  },
+  {
+    "title": "User#2 Post#1 Title",
+    "content": "User#2 Post#1 Content",
+    "user_id":2
+  },
+  {
+    "title": "User#3 Post#1 Title",
+    "content": "User#3 Post#1 Content",
+    "user_id":3
+  }
+]
