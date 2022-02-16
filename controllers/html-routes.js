@@ -1,37 +1,34 @@
-/* ACTIVITY 10
-// const router = require('express').Router();
-// const Dish = require('../models/Dish');
+const router = require('express').Router();
+const { Post, Comment, User } = require('../models');
+const withAuth = require('../utils/auth');
 
-// // route to get all dishes
-// router.get('/', async (req, res) => {
-//     const dishData = await Dish.findAll().catch((err) => { 
-//         res.json(err);
-//       });
-//         const dishes = dishData.map((dish) => dish.get({ plain: true }));
-//         res.render('all', { dishes });
-//       });
-  
-//   // route to get one dish
-//   router.get('/dish/:id', async (req, res) => {
-//     try{ 
-//         const dishData = await Dish.findByPk(req.params.id);
-//         if(!dishData) {
-//             res.status(404).json({message: 'No dish with this id!'});
-//             return;
-//         }
-//         const dish = dishData.get({ plain: true });
-//         res.render('dish', dish);
-//       } catch (err) {
-//           res.status(500).json(err);
-//       };     
-//   });
-
-// module.exports = router;
-*/
-
-// TODO:
 // GET - "/" - home
 // home.handlebars
+router.get('/', async (req, res) => {
+    try {
+      // Get all projects and JOIN with user data
+      const postData = await Post.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ['name'],
+          },
+        ],
+      });
+  
+      // Serialize data so the template can read it
+      const posts = postData.map((post) => post.get({ plain: true }));
+  
+      // Pass serialized data and session flag into template
+      res.render('home', { 
+        posts, 
+        logged_in: req.session.logged_in 
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 
 //TODO:
 // GET - "/login" - login form
@@ -56,3 +53,5 @@
 //TODO:
 // GET - "/dashboard/edit/:postId" - Edit Post
 // edit-post.handlebars
+
+module.exports = router;
