@@ -9,9 +9,6 @@ router.get('/', async (req, res) => {
     try {
       // Get all projects and JOIN with user data
       const postData = await Post.findAll({
-        where: {
-          user_id: req.session.user_id,
-        },
         include: [
           {
             model: User,
@@ -62,6 +59,33 @@ router.get('/signup', (req, res) => {
 //TODO:
 // GET - "/dashboard" - user dashboard
 // dashboard.handlebars
+router.get('/dashboard', withAuth, async (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  try {
+      // Get all projects and JOIN with user data
+      const postData = await Post.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
+        include: [
+          {
+            model: User,
+            attributes: ['name'],
+          },
+        ],
+      });
+
+      // Serialize data so the template can read it
+      const posts = postData.map((post) => post.get({ plain: true }));
+      // Pass serialized data and session flag into template
+      res.render('dashboard', {
+        posts,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
 
 //TODO:
 // GET - "/dashboard/new" - Create Post view
