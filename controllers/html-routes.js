@@ -90,6 +90,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
 //TODO:
 // GET - "/dashboard/new" - Create Post view
 // create-post.handlebars
+router.get('/dashboard/new', withAuth, (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+    res.render('create-post');
+});
 
 //TODO:
 // GET - "/post/:postId" - View single post
