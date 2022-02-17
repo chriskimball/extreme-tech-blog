@@ -87,7 +87,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
-//TODO:
 // GET - "/dashboard/new" - Create Post view
 // create-post.handlebars
 router.get('/dashboard/new', withAuth, (req, res) => {
@@ -99,8 +98,26 @@ router.get('/dashboard/new', withAuth, (req, res) => {
 // GET - "/post/:postId" - View single post
 // post.handlebars
 
-//TODO:
+
+
 // GET - "/dashboard/edit/:postId" - Edit Post
 // edit-post.handlebars
+router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  try {
+      // Get all projects and JOIN with user data
+      const postData = await Post.findByPk(req.params.id);
+
+      // Serialize data so the template can read it
+      const post = postData.get({ plain: true });
+      // Pass serialized data and session flag into template
+      res.render('edit-post', {
+        ...post,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
 
 module.exports = router;

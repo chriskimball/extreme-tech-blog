@@ -8,7 +8,7 @@
       <h2>Edit Post</h2>
     </div>
     <div class='card-body'>
-      <form id='create-post'>
+      <form id='edit-post'>
         <div class='mb-3'>
           <label for='post-title' class='form-label'>Title</label>
           <input type='input' class='form-control' id='post-title' aria-describedby='emailHelp' value='{{title}}'/>
@@ -18,8 +18,8 @@
           <textarea class="form-control" id="post-content" rows="3">{{content}}</textarea>
         </div>
         <div class="d-grid gap-2">
-        <button type='submit' class='btn btn-primary'>Update</button>
-        <button type='submit' class='btn btn-primary'>Delete</button>
+        <button type='submit' class='btn btn-primary' id='edit-btn' data-id='{{id}}'>Update</button>
+        <button type='submit' class='btn btn-primary' id='delete-btn' data-id='{{id}}'>Delete</button>
       </div>
       </form>
     </div>

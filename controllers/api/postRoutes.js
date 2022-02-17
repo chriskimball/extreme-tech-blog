@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//TODO:
 // POST - "/api/posts" - Create New Post View
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -17,11 +16,40 @@ router.post('/', withAuth, async (req, res) => {
     }
   });
 
-//TODO:
 // PUT - "/api/posts/:postId" - Edit Post API 
-
-//TODO:
+router.put('/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.update(req.body, {
+          where: {
+            id: req.params.id,
+            user_id: req.session.user_id,
+          },
+        });
+        res.status(200).json(postData);
+      } catch (err) {
+        res.status(400).json(err);
+      }
+});
+    
 // DELETE - "/api/posts/:postId" - Delete Post API
-
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+      const PostData = await Post.destroy({
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
+        },
+      });
+  
+      if (!PostData) {
+        res.status(404).json({ message: 'No project found with this id!' });
+        return;
+      }
+  
+      res.status(200).json(PostData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 module.exports = router;
