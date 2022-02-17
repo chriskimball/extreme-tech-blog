@@ -108,11 +108,6 @@ node_modules
 .env
 .DS_Store
 
-.eslintignore
-.eslintrc.json
-.prettierignore
-.prettierrc.json
-
 ORIGINALREADME.md
 
 indexTemplate.html
