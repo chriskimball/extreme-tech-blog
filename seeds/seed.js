@@ -1,4 +1,3 @@
-//TODO:
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
 
@@ -16,12 +15,12 @@ const seedDatabase = async () => {
 
   for (const post of postData) {
     await Post.create({
-      ...post
+      ...post,
     });
   }
   for (const comment of commentData) {
     await Comment.create({
-      ...comment
+      ...comment,
     });
   }
 

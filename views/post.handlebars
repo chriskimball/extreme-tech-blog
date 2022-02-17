@@ -3,31 +3,32 @@
 </div>
 
 <div class='p-5'>
-      <div class='card text-white bg-dark mb-3'>
-        <div class='card-header d-flex justify-content-between'>
-          <h5>{{post.title}}</h5>
-          <p>Posted by:
-            {{post.user.name}}
-            on
-            {{format_date post.date_created}}</p>
-        </div>
-        <div class='card-body'>
-          <p class='card-text'>{{post.content}}</p>
-        </div>
-      </div>
+  <div class='card text-white bg-dark mb-3'>
+    <div class='card-header d-flex justify-content-between'>
+      <h5>{{post.title}}</h5>
+      <p>Posted by:
+        {{post.user.name}}
+        on
+        {{format_date post.date_created}}</p>
+    </div>
+    <div class='card-body'>
+      <p class='card-text'>{{post.content}}</p>
+    </div>
   </div>
-
+</div>
 
 {{#each comments as |comment|}}
   <div class='p-5'>
-        <div class='card text-white bg-dark mb-3'>
-        
-        <div class='card-body'>
-          <p class='card-text'>{{comment.content}}</p>
-          <p class='card-text'>~ {{comment.user.name}}, {{format_date comment.date_created}}</p>
-          
-        </div>
+    <div class='card text-white bg-dark mb-3'>
+
+      <div class='card-body'>
+        <p class='card-text'>{{comment.content}}</p>
+        <p class='card-text'>~
+          {{comment.user.name}},
+          {{format_date comment.date_created}}</p>
+
       </div>
+    </div>
   </div>
 {{/each}}
 
@@ -39,11 +40,19 @@
     <div class='card-body'>
       <form id='add-comment' data-id='{{post.id}}'>
         <div class='mb-3'>
-          <textarea class="form-control" id="comment-content" rows="3"></textarea>
+          <textarea
+            class='form-control'
+            id='comment-content'
+            rows='3'
+          ></textarea>
         </div>
-        <div class="d-grid gap-2">
-        <button type='submit' class='btn btn-primary' id='edit-btn'>Submit</button>
-      </div>
+        <div class='d-grid gap-2'>
+          <button
+            type='submit'
+            class='btn btn-primary'
+            id='edit-btn'
+          >Submit</button>
+        </div>
       </form>
     </div>
   </div>
