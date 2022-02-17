@@ -5,30 +5,26 @@ const withAuth = require('../utils/auth');
 // GET - "/" - home
 // home.handlebars
 router.get('/', async (req, res) => {
-  if (req.session.logged_in) {
-    try {
-      // Get all projects and JOIN with user data
-      const postData = await Post.findAll({
-        include: [
-          {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
-      });
+  try {
+    // Get all projects and JOIN with user data
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
 
-      // Serialize data so the template can read it
-      const posts = postData.map((post) => post.get({ plain: true }));
-      // Pass serialized data and session flag into template
-      res.render('home', {
-        posts,
-        logged_in: req.session.logged_in,
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  } else {
-    res.render('home');
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
+    // Pass serialized data and session flag into template
+    res.render('home', {
+      posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
