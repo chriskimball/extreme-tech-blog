@@ -1,3 +1,4 @@
+// Helper function to assist with creating a new post.
 const createPostHandler = async (event) => {
   event.preventDefault();
 

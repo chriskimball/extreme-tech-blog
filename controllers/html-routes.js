@@ -3,10 +3,9 @@ const { Post, Comment, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET - "/" - home
-// home.handlebars
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all posts and JOIN with user data
     const postData = await Post.findAll({
       include: [
         {
@@ -29,7 +28,6 @@ router.get('/', async (req, res) => {
 });
 
 // GET - "/login" - login form
-// login.handlebars
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -41,7 +39,6 @@ router.get('/login', (req, res) => {
 });
 
 // GET - "/signup" - Registration Form
-// register.handlebars
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -53,7 +50,6 @@ router.get('/signup', (req, res) => {
 });
 
 // GET - "/dashboard" - user dashboard
-// dashboard.handlebars
 router.get('/dashboard', withAuth, async (req, res) => {
   // If the user is already logged in, redirect the request to another route
   try {
@@ -83,15 +79,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 // GET - "/dashboard/new" - Create Post view
-// create-post.handlebars
 router.get('/dashboard/new', withAuth, (req, res) => {
   // If the user is already logged in, redirect the request to another route
   res.render('create-post');
 });
 
 // GET - "/post/:postId" - View single post
-// post.handlebars
-router.get('/post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   // If the user is already logged in, redirect the request to another route
   try {
     // Get all projects and JOIN with user data
@@ -129,7 +123,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
 });
 
 // GET - "/dashboard/edit/:postId" - Edit Post
-// edit-post.handlebars
 router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
   // If the user is already logged in, redirect the request to another route
   try {

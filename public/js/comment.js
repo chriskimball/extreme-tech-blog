@@ -1,3 +1,4 @@
+// Helper function to handle comment form submission.
 const commentFormHandler = async (event) => {
   event.preventDefault();
 

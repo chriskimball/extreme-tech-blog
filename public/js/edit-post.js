@@ -1,3 +1,4 @@
+// Helper funciton to handle editing a post.
 const editPostHandler = async (event) => {
   event.preventDefault();
 
@@ -18,6 +19,7 @@ const editPostHandler = async (event) => {
   }
 };
 
+// Helper function to handle deleting a post.
 const deletePostHandler = async (event) => {
   event.preventDefault();
 
