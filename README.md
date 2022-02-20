@@ -7,81 +7,16 @@
 
 [Chris Kimball](https://github.com/chirskimball "chirskimball's GitHub Profile")
 
-TODO:
+
 ## Description
 
-The following project is the back end server and data model for an e-commerce website. This app utilizes Express.js, mysql, and sequelize to build out a REST API to Create, Read, Update and Delete products, categories, and product tags.
+The following project is a full stack application that allows users to view, post and comment on a tech blog. 
 
-This application has no front end at the moment, therefore users must interact with the API through an API client such as Insomnia.
+The tech blog application has a user login and registration page where users can sign up or sign into an account. It also consists of a dashboard which will display all of a user's blog posts after they have signed into their account.
 
-Users can make requests to the following API routes to create, read, update or delete data from the database.
+The dashboard page will have a "New Post" button that users can use to create a new blog post. Once a post has been posted, their dashboard will display the newly created post. If the user clicks on a post from their dashboard, it will load a posts page for the user which will allow them to update or delete their blog post.
 
-### Products
-* GET All Products: GET request to ```http://localhost:3001/api/products/```
-* GET one single Product by id: GET request to ```http://localhost:3001/api/products/:id```
-* CREATE New Product: POST request to ```http://localhost:3001/api/products/```
-    * Example JSON body data in POST request:
-    ```bash
-    {
-        "product_name": "Michael Jordan's socks",
-        "price": 200.00,
-        "stock": 3,
-        "tagIds": [1, 2, 3, 4],
-        "category_id": 5
-    }
-    ```
-* UPDATE Existing Product by id: PUT request to ```http://localhost:3001/api/products/:id```
-    * Example JSON body data in POST request:
-    ```bash
-    {
-        "product_name": "Basketball socks but affordable",
-        "price": 20.00,
-        "stock": 30,
-        "tagIds": [1, 2],
-        "category_id": 5
-    }
-    ```
-* DELETE Product by id: DELETE request to ```http://localhost:3001/api/products/:id```
-
-### Tags
-* GET All Tags: GET request to ```http://localhost:3001/api/tags/```
-* GET one single Tag by id: GET request to ```http://localhost:3001/api/tags/:id```
-* CREATE New Tag: POST request to ```http://localhost:3001/api/tags/```
-    * Example JSON body data in POST request:
-    ```bash
-    {
-        "tag_name": "Coding is cool",
-        "productIds": [1,2,3]
-    }
-    ```
-* UPDATE Existing Tag by id: PUT request to ```http://localhost:3001/api/tags/:id```
-    * Example JSON body data in POST request:
-    ```bash
-    {
-        "tag_name": "APIs are great and useful",
-        "productIds": [1]
-    }
-    ```
-* DELETE Tag by id: DELETE request to ```http://localhost:3001/api/tags/:id```
-
-### Categories
-* GET All Categories: GET request to ```http://localhost:3001/api/categories/```
-* GET one single Category by id: GET request to ```http://localhost:3001/api/categories/:id```
-* CREATE New Category: POST request to ```http://localhost:3001/api/categories/```
-    * Example JSON body data in POST request:
-    ```bash
-    {
-        "category_name": "Socks"
-    }
-    ```
-* UPDATE Existing Category by id: PUT request to ```http://localhost:3001/api/categories/:id```
-    * Example JSON body data in POST request:
-    ```bash
-    {
-        "category_name": "Famous socks"
-    }
-    ```
-* DELETE Category by id: DELETE request to ```http://localhost:3001/api/categories/:id```
+When users navigate back to the home page they will see a list of all blog posts regardless of user. If they click on a single post the post will open in a new page which will allow any user to comment on the post to allow for feedback and engagement with the blog posts.
 
 
 ## Table of Contents 
@@ -98,9 +33,7 @@ Users can make requests to the following API routes to create, read, update or d
 ---------------
 
 *  [Github Repository](https://github.com/chriskimball/extreme-tech-blog "Github Repo")
-<!-- *  [Walkthrough Demo Part 1](https://watch.screencastify.com/v/HeSGAJDGyeXjwtHWFB9b "Walkthrough Demo Part 1")
-*  [Walkthrough Demo Part 2](https://watch.screencastify.com/v/VdKKqlPSBL4TB29JUjq0 "Walkthrough Demo Part 2")
-*  [Walkthrough Demo Part 3](https://watch.screencastify.com/v/jqrxybZUpPKLFQoVCZXp "Walkthrough Demo Part 3") -->
+*  [Deployed Application](https://extreme-tech-blog.herokuapp.com/ "Deployed Application")
 
 
 ## Installation
@@ -161,6 +94,9 @@ This project is licensed under the MIT license.
 * Sequelize package
 * dotenv npm package
 * nodemon npm package
+* Connect Session Sequelize package
+* Heroku
+* JAWSDB
 
 
 ## Questions
